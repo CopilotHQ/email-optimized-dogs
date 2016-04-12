@@ -1,15 +1,21 @@
 var color = '#000000',
+    theCanvas,
     swatches = ['000000', '595f68', '848c96', 'ffffff',
-                '934a4a', 'ff2c2c', 'db8494',
-                'dcc285', 'ffff00',
-                '2cff2c',
-                '4a2cff'
+                '660000', '990000', 'FF0000', 'FF6666', 'FFCCCC',
+                '666600', '999900', 'FFFF00', 'FFFF66', 'FFFFCC',
+                '006600', '009900', '00FF00', '66FF66', 'CCFFCC',
+                '006666', '009999', '00FFFF', '66FFFF', 'CCFFFF',
+                '000066', '000099', '0000FF', '6666FF', 'CCCCFF',
+                '660066', '990099', 'FF00FF', 'FF66FF', 'FFCCFF',
+                'dcc285'
                 ];
 
 $(document).ready(function(){
+  // Load table grid
   $('#palette').load('components/grid.html', function(){
     refreshAreas();
   });
+
 
   for (var i = 0; i < swatches.length; i++) {
     $('<div class="swatch" data-color="' + swatches[i] + '"></div>').appendTo('#swatches');
@@ -21,6 +27,7 @@ $(document).ready(function(){
   }
   **/
 
+  // Selects html code snippet on click in text field
   $('#snippet').click(function(){
     $(this).select();
   })
@@ -40,15 +47,18 @@ $(document).ready(function(){
 function switchColor(){
   $('body').on('click', '.swatch', function() {
     color = $(this).data('color');
+    $('.swatch').removeClass('selectedSwatch');
+    $(this).addClass('selectedSwatch');
+
     if(color == 'transparent') {
-      $('#selectedSwatch').css({
+      $('#currentSwatch').css({
         'background-color': 'transparent',
         'background-image': 'url("images/bg.jpg")'
       });
       console.log(color);
     } else {
       color = '#' + $(this).data('color');
-      $('#selectedSwatch').css({
+      $('#currentSwatch').css({
         'background-color': color,
         'background-image': 'none'
       });
@@ -80,37 +90,73 @@ function paletteSizer(size, px) {
   });
 }
 
+
+// Download png of generated image
+$("#imgDownload").click(function() {
+  html2canvas($("#snippet2"), {
+    onrendered: function(canvas) {
+      var a = document.createElement('a');
+      a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      a.download = 'emaildog.png';
+      a.click();
+      //Canvas2Image.saveAsPNG(canvas);
+    }
+  });
+});
+
+
+// Update html in Get Code preview and html textfield
 function refreshAreas(){
   $('#snippet2').html($('#palette').html())
   $('#snippet').text($('#palette').html());
   return false;
 }
 
+
+// Save the current state of the pallete to local storage
 $('#savePixels').click(function(){
   var pixels = $('#snippet').val();
   localStorage.setItem('pixels', pixels);
   refreshAreas();
 });
 
+
+// Load the current state of the pallete from local storage
 $('#loadPixels').click(function() {
   $('#palette').html(localStorage.getItem('pixels'));
   refreshAreas();
 });
 
+
+// Reset drawing canvas to blank
+// @TODO add confirmation before clearing
+$('#clearPixels').click(function(){
+  confirmationModal("Are you sure you want to clear the canvas?", "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", "clear canvas", "loadFromLibrary('components/grid.html')");
+});
+
 $('#dog_001Pixels').click(function(){
-  $('#palette').load('../templates/dogs/dog_001.html', function(){
-    refreshAreas();
-  });
+  confirmationModal("Are you sure you want to load this?", "This will clear your current canvas and there's no way to get your beautiful artwork back, so make sure to save it out first.", "load it up!", "loadFromLibrary('../templates/dogs/dog_001.html')");
 });
 
 $('#dog_002Pixels').click(function(){
-  $('#palette').load('../templates/dogs/dog_002.html', function(){
-    refreshAreas();
-  });
+  confirmationModal("Are you sure you want to load this?", "This will clear your current canvas and there's no way to get your beautiful artwork back, so make sure to save it out first.", "load it up!", "loadFromLibrary('../templates/dogs/dog_002.html')");
 });
 
-$('#clearPixels').click(function(){
-  $('#palette').load('components/grid.html', function() {
+
+// Open confirmatino modal
+function confirmationModal(headline, message, button, func){
+  $('#confirmationModal #confirmationModal-header').html(headline);
+  $('#confirmationModal #confirmationModal-body').html(message);
+  $('#confirmationModal #confirmationModal-button').html(button);
+  $('#confirmationModal #confirmationModal-button').attr('onclick', func);
+  $('#confirmationModal').modal('show');
+}
+
+
+// Clear drawing area
+function loadFromLibrary(template) {
+  $('#palette').load(template, function() {
+    $('#confirmationModal').modal('hide');
     refreshAreas();
   });
-});
+}

@@ -3,7 +3,12 @@
   "private": true,
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
-    "modernizr": "~2.8.1"
+    "modernizr": "~2.8.1",
+    "html2canvas": "^0.4.1",
+    "base64": "^0.3.0",
+    "canvas2image": "*",
+    "filesaver": "*",
+    "canvas-to-Blob.js": "*"
   },
   "overrides": {
     "bootstrap-sass": {

@@ -32,7 +32,9 @@
 
       <div class="row">
         <div class="col-sm-4 logo">
-          <img src="images/dog-logo.png" /> <span>Email Optimized Dogs</span>
+          <a href="/">
+            <img src="images/dog-logo.png" /> <span>Email Optimized Dogs</span>
+          </a>
         </div>
         <div class="col-sm-8 text-right">
           <button class="btn" id="savePixels"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> save canvas</button>
@@ -53,9 +55,13 @@
 
         <div class="container-fluid" id="card-content">
           <div class="row">
-            <div class="col-xs-12" id="swatches">
-              <div id="selectedSwatch"></div>
+            <div class="col-xs-12">
+              <div id="currentSwatch"></div>
+            </div>
+          </div>
 
+          <div class="row">
+            <div class="col-xs-12" id="swatches">
               <div class="swatch" data-color="transparent"></div><br>
             </div>
           </div>
@@ -82,12 +88,14 @@
 
             <div class="text-center">
               <div id="snippet2"></div>
+              <br />
 
               <div class="btn-group" role="group" aria-label="Pixel size">
                 <button type="button" id="size-small" class="btn btn-secondary">Small</button>
                 <button type="button" id="size-medium" class="btn btn-secondary">Medium</button>
                 <button type="button" id="size-large" class="btn btn-secondary">Large</button>
               </div>
+              <input type="button" id="imgDownload" class="btn btn-secondary" value="Download" download="testXXX.png">
             </div>
 
             <textarea id="snippet" readonly="readonly"></textarea>
@@ -102,9 +110,32 @@
     </div>
 
 
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="confirmationModal-header"></h4>
+          </div>
+          <div class="modal-body">
+            <p id="confirmationModal-body"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">nevermind...</button>
+            <button type="button" class="btn btn-primary" onclick="" id="confirmationModal-button"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/html2canvas/build/html2canvas.js"></script>
+    <script src="/bower_components/base64/base64.js"></script>
+    <script src="/bower_components/canvas2image/canvas2image/canvas2image.js"></script>
+    <script src="/bower_components/filesaver/filesaver.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -123,9 +154,6 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
     <!-- endbuild -->
-
-    <script src="/bower_components/masonry/masonry.js"></script>
-
 
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
