@@ -3,8 +3,11 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
-
-$card-width:  240px;
+@import "components/variables";
+@import "components/swatches";
+@import "components/snippet";
+@import "components/buttons";
+@import "components/cards";
 
 body {
   background: #f5f5f5;
@@ -15,12 +18,13 @@ body {
 }
 
 .menubar {
-  font-size: 14px;
   background: white;
   margin-bottom: 40px;
-  padding: 0 5px;
+  padding: 10px;
   box-sizing: border-box;
-  border-bottom: 1px solid #DDDDDD;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 
   .row {
     margin: 0;
@@ -32,29 +36,15 @@ body {
     padding: 0;
   }
 
-  a {
-    text-decoration: none;
-    color: #333333;
-  }
-
-  .btn {
-    border-radius: 0;
-    padding: 10px 8px;
-    background: transparent;
-
-    &:hover {
-      background: #eaeaea;
-    }
-  }
-
   .logo {
-    padding: 6px;
-    font-family: Georgia, serif;
-
+    font-weight: bold;
+    font-size:16px;
+    position: relative;
+    top: 1px;
     span {
       margin-left: 4px;
       position: relative;
-      top: 2px;
+      top: 4px;
     }
   }
 }
@@ -64,24 +54,9 @@ body {
   border-bottom: 1px solid #1a1a1a;
 }
 
-.card-container {
-  display: inline-block;
-  width: $card-width;
-  margin: 0px auto;
-  background: white;
-  box-shadow: rgba(0,0,0,0.2) 0px 2px 4px -2px;
-  overflow: auto;
-}
-
-#dogGrid {
+.dogGrid {
+  padding-top:80px;
   text-align: center;
-
-  .card-container {
-    text-align: center;
-    width: auto;
-    padding: 20px;
-    margin: 5px 10px
-  }
 }
 
 #paletteContainer {
@@ -115,108 +90,3 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
-
-// Code Snippet
-  #snippet {
-    background: #FAFAFA;
-    border: 1px solid #EAEAEA;
-    border-radius: 3px;
-
-    font-size: 10px;
-
-    width: 100%;
-    height: 200px;
-    margin-top: 10px;
-    overflow: scroll;
-  }
-
-  #snippet2 {
-    display: inline-block;
-    margin: 0 auto;
-  }
-
-// Colors
-  #swatches {
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 1em;
-  }
-
-
-  .swatch {
-    padding: 10px;
-    margin: 0;
-    box-sizing: border-box;
-
-    border-color: transparent;
-    border-width: 2px;
-    border-style: solid;
-
-    display: inline-block;
-
-    &.selectedSwatch {
-      border: 2px solid red;
-    }
-
-    // Erase
-    &[data-color="transparent"] { background: url('../images/bg.jpg'); }
-
-    // Grayscale
-    &[data-color="000000"] { background: #000000; }
-    &[data-color="595f68"] { background: #595f68; }
-    &[data-color="848c96"] { background: #848c96; }
-    &[data-color="ffffff"] { background: #ffffff; }
-
-    // Red
-    &[data-color="660000"] { background: #660000; }
-    &[data-color="990000"] { background: #990000; }
-    &[data-color="FF0000"] { background: #FF0000; }
-    &[data-color="FF6666"] { background: #FF6666; }
-    &[data-color="FFCCCC"] { background: #FFCCCC; }
-
-    // Yellow
-    &[data-color="666600"] { background: #666600; }
-    &[data-color="999900"] { background: #999900; }
-    &[data-color="FFFF00"] { background: #FFFF00; }
-    &[data-color="FFFF66"] { background: #FFFF66; }
-    &[data-color="FFFFCC"] { background: #FFFFCC; }
-
-    // Green
-    &[data-color="006600"] { background: #006600; }
-    &[data-color="009900"] { background: #009900; }
-    &[data-color="00FF00"] { background: #00FF00; }
-    &[data-color="66FF66"] { background: #66FF66; }
-    &[data-color="CCFFCC"] { background: #CCFFCC; }
-
-    // Cyan
-    &[data-color="006666"] { background: #006666; }
-    &[data-color="009999"] { background: #009999; }
-    &[data-color="00FFFF"] { background: #00FFFF; }
-    &[data-color="66FFFF"] { background: #66FFFF; }
-    &[data-color="CCFFFF"] { background: #CCFFFF; }
-
-    // Blue
-    &[data-color="000066"] { background: #000066; }
-    &[data-color="000099"] { background: #000099; }
-    &[data-color="0000FF"] { background: #0000FF; }
-    &[data-color="6666FF"] { background: #6666FF; }
-    &[data-color="CCCCFF"] { background: #CCCCFF; }
-
-    // Magenta
-    &[data-color="660066"] { background: #660066; }
-    &[data-color="990099"] { background: #990099; }
-    &[data-color="FF00FF"] { background: #FF00FF; }
-    &[data-color="FF66FF"] { background: #FF66FF; }
-    &[data-color="FFCCFF"] { background: #FFCCFF; }
-  }
-
-  #currentSwatch {
-    height: 60px;
-    width: 60px;
-    margin-bottom: 10px;
-
-    background: #000000;
-    border: 1px solid #1a1a1a;
-  }

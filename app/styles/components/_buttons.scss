@@ -1,0 +1,14 @@
+// Button Styles
+.btn {
+  border: none;
+  padding: 20px 30px;
+
+  .menubar & {
+    padding: 10px 20px;
+  }
+
+  &.btn-flatTop {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
