@@ -77,8 +77,15 @@
 #currentSwatch {
   height: 60px;
   width: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   background: #000000;
   border: 1px solid #1a1a1a;
+  float: left;
+}
+
+.currentSwatch-input {
+  width: 80px;
+  margin-left: 70px;
+  margin-top: 25px;
 }

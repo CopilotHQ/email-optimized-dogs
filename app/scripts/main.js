@@ -17,16 +17,24 @@ $(document).ready(function(){
     refreshAreas();
   });
 
+  // Make swatches work
+  $('#currentSwatch').colorpicker().on('changeColor', function(e) {
+    $('#currentSwatch').css('background-color', e.color.toHex());
+    $('#cp1').val(e.color.toHex());
+    color = e.color.toHex();
+  });
 
+  $('#cp1').change(function(){
+    $('#currentSwatch').css('background-color', $('#cp1').val());
+    color = $('#cp1').val();
+  });
+
+
+  // Create palette from swatches
   for (var i = 0; i < swatches.length; i++) {
     $('<div class="swatch" data-color="' + swatches[i] + '"></div>').appendTo('#swatches');
   }
 
-  /** @todo: Finish this
-  if(!localStorage.getItem('pixels')){
-    $('#loadPixels').addClass('disabled');
-  }
-  **/
 
   // Selects html code snippet on click in text field
   $('#snippet').click(function(){
