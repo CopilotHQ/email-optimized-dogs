@@ -3,7 +3,8 @@
   border: none;
   padding: 20px 30px;
 
-  .menubar & {
+  .menubar &,
+  .modal-body & {
     padding: 10px 20px;
   }
 
