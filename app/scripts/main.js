@@ -1,5 +1,6 @@
 var color = '#000000',
     theCanvas,
+    templateID,
     swatches = ['000000', '595f68', '848c96', 'ffffff',
                 '660000', '990000', 'FF0000', 'FF6666', 'FFCCCC',
                 '666600', '999900', 'FFFF00', 'FFFF66', 'FFFFCC',
@@ -39,10 +40,20 @@ $(document).ready(function(){
   paletteSizer('medium', '5');
   paletteSizer('large', '10');
 
+  loadTemplate();
+
   refreshAreas();
 
   return false;
 });
+
+function loadTemplate() {
+  templateID = getUrlParameter('templateID');
+
+  if(templateID !== undefined) {
+    loadFromLibrary('../templates/dogs/' + templateID + '.html')
+  }
+}
 
 function switchColor(){
   $('body').on('click', '.swatch', function() {
@@ -123,8 +134,7 @@ $('#savePixels').click(function(){
 
 // Load the current state of the pallete from local storage
 $('#loadPixels').click(function() {
-  $('#palette').html(localStorage.getItem('pixels'));
-  refreshAreas();
+  confirmationModal("Are you sure you want to load from your local storage?", "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", "load", "loadFromLocalStorage()");
 });
 
 
@@ -133,15 +143,6 @@ $('#loadPixels').click(function() {
 $('#clearPixels').click(function(){
   confirmationModal("Are you sure you want to clear the canvas?", "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", "clear canvas", "loadFromLibrary('components/grid.html')");
 });
-
-$('#dog_001Pixels').click(function(){
-  confirmationModal("Are you sure you want to load this?", "This will clear your current canvas and there's no way to get your beautiful artwork back, so make sure to save it out first.", "load it up!", "loadFromLibrary('../templates/dogs/dog_001.html')");
-});
-
-$('#dog_002Pixels').click(function(){
-  confirmationModal("Are you sure you want to load this?", "This will clear your current canvas and there's no way to get your beautiful artwork back, so make sure to save it out first.", "load it up!", "loadFromLibrary('../templates/dogs/dog_002.html')");
-});
-
 
 // Open confirmatino modal
 function confirmationModal(headline, message, button, func){
@@ -160,3 +161,27 @@ function loadFromLibrary(template) {
     refreshAreas();
   });
 }
+
+function loadFromLocalStorage(item) {
+  $('#palette').html(localStorage.getItem('pixels'));
+  $('#confirmationModal').modal('hide');
+  refreshAreas();
+}
+
+
+
+// Get URL params
+  var getUrlParameter = function getUrlParameter(sParam) {
+      var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
+
+      for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+      }
+  };
