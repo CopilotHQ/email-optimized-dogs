@@ -78,7 +78,7 @@ function switchColor(){
     } else {
       color = '#' + $(this).data('color');
       $('#currentSwatch').css({
-        'background-color': color,
+        'background': color,
         'background-image': 'none'
       });
     }
@@ -93,7 +93,9 @@ function paintPixels(){
         'background-color': '',
       });
     } else {
-      $(this).css('background-color', color);
+      //$(this).css('background', color);
+      $(this).attr('bgcolor', color);
+      console.log(color);
     }
     refreshAreas();
   });
@@ -193,3 +195,18 @@ function loadFromLocalStorage(item) {
           }
       }
   };
+
+
+// Translate RGB to Hex
+function rgbToHex(col)
+{
+  if(col.charAt(0)=='r') {
+    col=col.replace('rgb(','').replace(')','').split(',');
+    var r=parseInt(col[0], 10).toString(16);
+    var g=parseInt(col[1], 10).toString(16);
+    var b=parseInt(col[2], 10).toString(16);
+    r=r.length==1?'0'+r:r; g=g.length==1?'0'+g:g; b=b.length==1?'0'+b:b;
+    var colHex='#'+r+g+b;
+    return colHex;
+  }
+}
