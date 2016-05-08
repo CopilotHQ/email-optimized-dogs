@@ -17,7 +17,7 @@ $(document).ready(function(){
     refreshAreas();
   });
 
-  // Make swatches work
+  /** Make swatches work **/
   $('#currentSwatch').colorpicker().on('changeColor', function(e) {
     $('#currentSwatch').css('background-color', e.color.toHex());
     $('#cp1').val(e.color.toHex());
