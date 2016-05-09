@@ -1,14 +1,7 @@
 var color = '#000000',
     theCanvas,
     templateID,
-    swatches = ['000000', '595f68', '848c96', 'ffffff',
-                '660000', '990000', 'FF0000', 'FF6666', 'FFCCCC',
-                '666600', '999900', 'FFFF00', 'FFFF66', 'FFFFCC',
-                '006600', '009900', '00FF00', '66FF66', 'CCFFCC',
-                '006666', '009999', '00FFFF', '66FFFF', 'CCFFFF',
-                '000066', '000099', '0000FF', '6666FF', 'CCCCFF',
-                '660066', '990099', 'FF00FF', 'FF66FF', 'FFCCFF',
-                'dcc285'
+    swatches = ['8b5e3c','c49a6c','594a42','726658','9b8579','c2b59b','e98c1b','f4cb4b','fffcc0','00658f','93c8d0','911710','d13c39','f9afaf','ee2a7b','662d91','000000','58595b','808285','a7a9ac','d1d3d4','ffffff'
                 ];
 
 $(document).ready(function(){
@@ -32,7 +25,7 @@ $(document).ready(function(){
 
   // Create palette from swatches
   for (var i = 0; i < swatches.length; i++) {
-    $('<div class="swatch" style="background: ' + swatches[i] + '" data-color="' + swatches[i] + '"></div>').appendTo('#swatches');
+    $('<div class="swatch" style="background: #' + swatches[i] + '" data-color="' + swatches[i] + '"></div>').appendTo('#swatches');
   }
 
 
