@@ -89,8 +89,8 @@ function switchColor(){
 function paintPixels(){
   $('body').on('click', '#palette td', function(){
     if(color == 'transparent') {
-      $(this).css({
-        'background-color': '',
+      $(this).attr({
+        'bgcolor': '',
       });
     } else {
       //$(this).css('background', color);
