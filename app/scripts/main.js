@@ -154,7 +154,13 @@ $('#clearPixels').click(function(){
   confirmationModal("Are you sure you want to clear the canvas?", "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", "clear canvas", "loadFromLibrary('components/grid.html')");
 });
 
-// Open confirmatino modal
+
+// Open code modal
+$('#getCode').on('click', function(){
+  $('#codeModal').modal('show');
+});
+
+// Open confirmation modal
 function confirmationModal(headline, message, button, func){
   $('#confirmationModal #confirmationModal-header').html(headline);
   $('#confirmationModal #confirmationModal-body').html(message);
