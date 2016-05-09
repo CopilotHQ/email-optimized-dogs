@@ -25,55 +25,6 @@
   // Erase
   &[data-color="transparent"] { background: url('../images/bg.jpg'); }
 
-  // Grayscale
-  &[data-color="000000"] { background: #000000; }
-  &[data-color="595f68"] { background: #595f68; }
-  &[data-color="848c96"] { background: #848c96; }
-  &[data-color="ffffff"] { background: #ffffff; }
-
-  // Red
-  &[data-color="660000"] { background: #660000; }
-  &[data-color="990000"] { background: #990000; }
-  &[data-color="FF0000"] { background: #FF0000; }
-  &[data-color="FF6666"] { background: #FF6666; }
-  &[data-color="FFCCCC"] { background: #FFCCCC; }
-
-  // Yellow
-  &[data-color="666600"] { background: #666600; }
-  &[data-color="999900"] { background: #999900; }
-  &[data-color="FFFF00"] { background: #FFFF00; }
-  &[data-color="FFFF66"] { background: #FFFF66; }
-  &[data-color="FFFFCC"] { background: #FFFFCC; }
-
-  // Green
-  &[data-color="006600"] { background: #006600; }
-  &[data-color="009900"] { background: #009900; }
-  &[data-color="00FF00"] { background: #00FF00; }
-  &[data-color="66FF66"] { background: #66FF66; }
-  &[data-color="CCFFCC"] { background: #CCFFCC; }
-
-  // Cyan
-  &[data-color="006666"] { background: #006666; }
-  &[data-color="009999"] { background: #009999; }
-  &[data-color="00FFFF"] { background: #00FFFF; }
-  &[data-color="66FFFF"] { background: #66FFFF; }
-  &[data-color="CCFFFF"] { background: #CCFFFF; }
-
-  // Blue
-  &[data-color="000066"] { background: #000066; }
-  &[data-color="000099"] { background: #000099; }
-  &[data-color="0000FF"] { background: #0000FF; }
-  &[data-color="6666FF"] { background: #6666FF; }
-  &[data-color="CCCCFF"] { background: #CCCCFF; }
-
-  // Magenta
-  &[data-color="660066"] { background: #660066; }
-  &[data-color="990099"] { background: #990099; }
-  &[data-color="FF00FF"] { background: #FF00FF; }
-  &[data-color="FF66FF"] { background: #FF66FF; }
-  &[data-color="FFCCFF"] { background: #FFCCFF; }
-}
-
 #currentSwatch {
   height: 60px;
   width: 60px;

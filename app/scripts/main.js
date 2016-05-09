@@ -32,7 +32,7 @@ $(document).ready(function(){
 
   // Create palette from swatches
   for (var i = 0; i < swatches.length; i++) {
-    $('<div class="swatch" data-color="' + swatches[i] + '"></div>').appendTo('#swatches');
+    $('<div class="swatch" style="background: ' + swatches[i] + '" data-color="' + swatches[i] + '"></div>').appendTo('#swatches');
   }
 
 
