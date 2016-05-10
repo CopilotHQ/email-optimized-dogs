@@ -7,23 +7,15 @@
 
 
 .swatch {
-  padding: 10.8px;
-  margin: 2px;
+  padding: 13px;
   box-sizing: border-box;
 
-  border-radius: 12px;
 
   border-color: transparent;
   border-width: 2px;
   border-style: solid;
 
   display: inline-block;
-
-  &[data-color="ffffff"],
-  &[data-color="transparent"] {
-    border-color: #eaeaea;
-    border-width: 2px;
-  }
 
   &.selectedSwatch {
     border: 2px solid #4a4a4a;
@@ -36,7 +28,7 @@
 #currentSwatch {
   height: 34px;
   width: 34px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   float: left;
 
   background: #000000;
