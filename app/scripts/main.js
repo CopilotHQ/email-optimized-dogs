@@ -65,7 +65,7 @@ function loadTemplate() {
   templateID = getUrlParameter('templateID');
 
   if(templateID !== undefined) {
-    loadFromLibrary('../templates/dogs/' + templateID + '.html')
+    loadFromLibrary('../templates/' + templateID + '.html')
   }
 }
 
