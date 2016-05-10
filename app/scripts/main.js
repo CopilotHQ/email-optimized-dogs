@@ -74,6 +74,7 @@ function switchColor(){
         'background': color,
         'background-image': 'none'
       });
+      $('#cp1').val(color);
     }
     console.log(color);
   });
