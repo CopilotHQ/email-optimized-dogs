@@ -1,4 +1,4 @@
-$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+//$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
@@ -8,6 +8,7 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 @import "components/snippet";
 @import "components/buttons";
 @import "components/cards";
+@import "components/iconic-bootstrap";
 
 body {
   background: #f5f5f5;
