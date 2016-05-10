@@ -1,4 +1,4 @@
-# ![Email Dogs](http://localhost:9000/images/dog-logo.png) email-optimized-dogs
+# ![Email Dogs](http://emaildog.club/images/dog-logo.png) email-optimized-dogs
 A tool for creating dogs (and other pixel artworks) that are optimized for email.
 
 ## Installation
@@ -16,4 +16,4 @@ I haven't set up the gulpfile well yet, so any new folders you add will need to 
 
 @TODO - Fix above issue.
 
-![Email Dogs](http://localhost:9000/images/dogs/dog_003.png)
+![Email Dogs](http://emaildog.club/images/dogs/dog_003.png)
