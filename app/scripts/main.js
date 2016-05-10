@@ -94,17 +94,28 @@ function switchColor(){
 }
 
 function paintPixels(){
-  $('body').on('click', '#palette td', function(){
+  var isMouseDown = false;
+  var paint = function(self){
     if(color == 'transparent') {
-      $(this).attr({
+      $(self).attr({
         'bgcolor': '',
       });
     } else {
-      //$(this).css('background', color);
-      $(this).attr('bgcolor', color);
-      console.log(color);
+      $(self).attr('bgcolor', color);
     }
     refreshAreas();
+  };
+
+  $('body').on('mousedown', '#palette td', function() {
+    isMouseDown = true;
+    paint(this);
+  })
+  .on("mousemove","#palette td",function(){
+    if(isMouseDown)
+      paint(this);
+  })
+  .on("mouseup",function(){
+    isMouseDown = false;
   });
 }
 
