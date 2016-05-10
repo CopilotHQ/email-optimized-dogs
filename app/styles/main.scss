@@ -18,6 +18,20 @@ body {
   height: 100%;
 }
 
+a {
+  color: $primary;
+}
+
+.btn-primary {
+  background: $secondary;
+  color: white;
+}
+
+.btn-secondary {
+  background: #EAEAEA;
+  color: #777;
+}
+
 .menubar {
   background: white;
   margin-bottom: 40px;
