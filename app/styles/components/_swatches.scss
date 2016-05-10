@@ -3,23 +3,26 @@
   text-align: left;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1em;
 }
 
 
 .swatch {
-  padding: 10px;
+  padding: 11.8px;
   margin: 0;
   box-sizing: border-box;
 
   border-color: transparent;
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
 
   display: inline-block;
 
   &.selectedSwatch {
-    border: 2px solid red;
+    border: 1px solid #FFFFFF;
+    &[data-color="ffffff"],
+    &[data-color="transparent"] {
+      border-color: #4a4a4a;
+    }
   }
 
   // Erase
@@ -27,17 +30,28 @@
 }
 
 #currentSwatch {
-  height: 60px;
-  width: 60px;
+  height: 34px;
+  width: 34px;
   margin-bottom: 20px;
+  float: left;
 
   background: #000000;
-  border: 1px solid #1a1a1a;
-  float: left;
+
+  border: 1px solid #CCC;
+  border-right: none;
+
+  box-shadow: inset rgba(0,0,0,0.1) 0px 1px 2px;;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .currentSwatch-input {
-  width: 80px;
-  margin-left: 70px;
-  margin-top: 25px;
+  width: auto;
+  margin-left: 32px;
+  border-radius:0;
+
+  border: 1px solid #CCC;
+  box-shadow: inset rgba(0,0,0,0.1) 0px 1px 2px;;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
