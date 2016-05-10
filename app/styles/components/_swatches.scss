@@ -7,22 +7,26 @@
 
 
 .swatch {
-  padding: 11.8px;
-  margin: 0;
+  padding: 10.8px;
+  margin: 2px;
   box-sizing: border-box;
 
+  border-radius: 12px;
+
   border-color: transparent;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
 
   display: inline-block;
 
+  &[data-color="ffffff"],
+  &[data-color="transparent"] {
+    border-color: #eaeaea;
+    border-width: 2px;
+  }
+
   &.selectedSwatch {
-    border: 1px solid #FFFFFF;
-    &[data-color="ffffff"],
-    &[data-color="transparent"] {
-      border-color: #4a4a4a;
-    }
+    border: 2px solid #4a4a4a;
   }
 
   // Erase
@@ -32,7 +36,7 @@
 #currentSwatch {
   height: 34px;
   width: 34px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   float: left;
 
   background: #000000;

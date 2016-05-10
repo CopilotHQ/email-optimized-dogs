@@ -20,6 +20,11 @@ body {
 
 a {
   color: $primary;
+  transition-duration: .1s;
+}
+
+.btn {
+  transition-duration: .1s;
 }
 
 .btn-primary {
@@ -111,9 +116,4 @@ a {
       cursor: crosshair;
     }
   }
-}
-
-#card-content {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
