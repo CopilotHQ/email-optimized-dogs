@@ -23,6 +23,19 @@ $(document).ready(function(){
   });
 
 
+  // Set background tracing url
+  $('#traceBG').change(function(){
+    console.log($('#traceBG').val());
+    if($('#traceBG').val() !== '') {
+      $('#paletteContainer').addClass('hasTraceBG');
+      $('.hasTraceBG').css('background-image', 'url(' + $(this).val() + ')');
+    } else {
+      $('#paletteContainer').removeClass('hasTraceBG');
+      $('#paletteContainer').css('background-image', 'url(../images/bg.jpg)');
+    }
+  });
+
+
   // Create palette from swatches
   for (var i = 0; i < swatches.length; i++) {
     $('<div class="swatch" style="background: #' + swatches[i] + '" data-color="' + swatches[i] + '"></div>').appendTo('#swatches');

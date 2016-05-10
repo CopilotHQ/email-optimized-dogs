@@ -94,6 +94,12 @@ a {
   background: url('../images/bg.jpg');
   min-height: 181px;
 
+  &.hasTraceBG {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
   #palette {
     //background: url('../images/bg.jpg');
     line-height: 0;
