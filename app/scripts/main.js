@@ -9,7 +9,7 @@ $(document).ready(function(){
   $('#palette').load('components/grid.html', function(){
     refreshAreas();
   });
-  
+
   /** Make swatches work **/
   $('#currentSwatch').colorpicker().on('changeColor', function(e) {
     $('#currentSwatch').css('background-color', e.color.toHex());
@@ -97,9 +97,9 @@ function paintPixels(){
 
 function paletteSizer(size, px) {
   $('#size-' + size).click(function(){
-    $('td').css({
-      'width': px + 'px',
-      'height': px + 'px'
+    $('td').attr({
+      'width': px,
+      'height': px
     });
     refreshAreas();
   });
@@ -123,7 +123,7 @@ $("#imgDownload").click(function() {
 // Update html in Get Code preview and html textfield
 function refreshAreas(){
   $('#snippet2').html($('#palette').html())
-  $('#snippet').text($('#palette').html());
+  $('#snippet').text($('#palette').html().trim());
   return false;
 }
 
