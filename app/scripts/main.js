@@ -1,7 +1,7 @@
 var color = '#000000',
     theCanvas,
     templateID,
-    swatches = ['8b5e3c','c49a6c','594a42','726658','9b8579','c2b59b','e98c1b','f4cb4b','fffcc0','00658f','93c8d0','911710','d13c39','f9afaf','ee2a7b','662d91','000000','58595b','808285','a7a9ac','d1d3d4','ffffff'
+    swatches = ['8b5e3c','c49a6c','594a42','726658','9b8579','c2b59b','e98c1b','f4cb4b','fffcc0','00658f','93c8d0','911710','d13c39','f9afaf','ee2a7b','662d91','ffffff','d1d3d4','a7a9ac','808285','58595b','000000'
                 ];
 
 $(document).ready(function(){
@@ -9,7 +9,7 @@ $(document).ready(function(){
   $('#palette').load('components/grid.html', function(){
     refreshAreas();
   });
-
+  
   /** Make swatches work **/
   $('#currentSwatch').colorpicker().on('changeColor', function(e) {
     $('#currentSwatch').css('background-color', e.color.toHex());
