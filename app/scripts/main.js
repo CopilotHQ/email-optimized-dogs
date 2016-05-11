@@ -5,6 +5,10 @@ var color = '#000000',
                 ];
 
 $(document).ready(function(){
+  var sourceImage = $(".dogLogo")[0],
+      colorThief = new ColorThief();
+  console.log(colorThief.getColor(sourceImage));
+
   // Load table grid
   $('#palette').load('components/grid.html', function(){
     refreshAreas();
