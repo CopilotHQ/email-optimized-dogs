@@ -38,10 +38,10 @@ angular.module('emailDogsApp')
     $scope.isMouseDown = false;
     $scope.mouseUp = function() {
       $scope.isMouseDown = false;
-    }
+    };
     $scope.mouseDown = function() {
       $scope.isMouseDown = true;
-    }
+    };
 
 
     // Open confirmation modal
@@ -56,7 +56,7 @@ angular.module('emailDogsApp')
         $scope.$apply();
       });
       $('#confirmationModal').modal('show');
-    }
+    };
 
     $scope.isEdit = false;
     $scope.$on("$locationChangeSuccess", function () {

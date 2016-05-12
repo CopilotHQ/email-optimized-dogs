@@ -20,9 +20,9 @@ angular.module('emailDogsApp')
 	  templateID = getUrlParameter('templateID');
 
 	  if(templateID !== undefined) {
-	    loadFromLibrary('../templates/' + templateID + '.html')
+	    loadFromLibrary('../templates/' + templateID + '.html');
 	  }
-	}
+	};
 
 	$scope.switchColor = function (newColor){
 	    $scope.curColor = (newColor === 'transparent')? '' : '#'+newColor;
@@ -33,14 +33,18 @@ angular.module('emailDogsApp')
 	      $scope.curSwatchStyle = {'background-color': $scope.curColor,'background-image': 'none'};
 	      $('#currentSwatch').colorpicker('setValue', $scope.curColor);
 	    }
-	}
+	};
 
 	$scope.paintPixels = function (event){
 		var self = event.target;
-		if(event.type == "mousedown") $scope.mouseDown();
+		if(event.type === "mousedown") {
+			$scope.mouseDown();
+		}
 
-		if($scope.isMouseDown) $(self).attr('bgcolor', $scope.curColor);
-	}
+		if($scope.isMouseDown) {
+			$(self).attr('bgcolor', $scope.curColor);
+		}
+	};
 
 	function paletteSizer(size, px) {
 	  $('#size-' + size).click(function(){
@@ -56,11 +60,10 @@ angular.module('emailDogsApp')
 	paletteSizer('large', '10');
 
 	$scope.showCodeModal = function(){
-	  $('#snippet2').html($('#palette').html())
+	  $('#snippet2').html($('#palette').html());
 	  $('#snippet').text($('#snippet2').html().trim());
 	  $('#codeModal').modal('show');
-	}
-
+	};
 
 
 	// Set background tracing url
@@ -123,14 +126,15 @@ angular.module('emailDogsApp')
 	  // Selects html code snippet on click in text field
 	  $('#snippet').click(function(){
 	    $(this).select();
-	  })
+	  });
 
 	// "private" functions are not actually private but please think if that like they are.
 
 	function loadFromLibrary(template) {
 	  // Limit us to approved templates
-	  if(-1 == $scope.templates.indexOf(template))
+	  if(-1 === $scope.templates.indexOf(template)) {
 	  	template = 'grid';
+	  }
 
 	  $http({
 	  	method: 'GET',
@@ -147,21 +151,6 @@ angular.module('emailDogsApp')
 	function loadFromLocalStorage(item) {
 	  $scope.myTemplate = localStorage.getItem('pixels');
 	  console.log("Load from Local Storage Complete");
-	}
-
-
-	// Translate RGB to Hex
-	function rgbToHex(col)
-	{
-	  if(col.charAt(0)=='r') {
-	    col=col.replace('rgb(','').replace(')','').split(',');
-	    var r=parseInt(col[0], 10).toString(16);
-	    var g=parseInt(col[1], 10).toString(16);
-	    var b=parseInt(col[2], 10).toString(16);
-	    r=r.length==1?'0'+r:r; g=g.length==1?'0'+g:g; b=b.length==1?'0'+b:b;
-	    var colHex='#'+r+g+b;
-	    return colHex;
-	  }
 	}
 
 	$scope.parseColor = function (color, toNumber) 
@@ -182,6 +171,6 @@ angular.module('emailDogsApp')
 
 	    return color;
 	  }
-	}
+	};
 
   }]);
