@@ -1,9 +1,8 @@
 // Colors
-#swatches {
+.swatches {
   text-align: left;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 15px;
 }
 
 
@@ -17,6 +16,10 @@
   border-style: solid;
 
   display: inline-block;
+
+  #pictureSwatches & {
+    padding: 12.8px;
+  }
 
   &.selectedSwatch {
     border: 2px solid #4a4a4a;
@@ -51,4 +54,8 @@
   box-shadow: inset rgba(0,0,0,0.1) 0px 1px 2px;;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+
+#pictureSwatches {
+  margin-top: 5px;
 }
