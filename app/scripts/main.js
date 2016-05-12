@@ -11,6 +11,13 @@ $(document).ready(function(){
   });
 
   /** Make swatches work **/
+  $('#currentSwatch').colorpicker({
+    create: function() {
+      color: $('#cp1').val()
+    }
+  });
+  $('#currentSwatch').css('background-color', $('#cp1').val());
+
   $('#currentSwatch').colorpicker().on('changeColor', function(e) {
     $('#currentSwatch').css('background-color', e.color.toHex());
     $('#cp1').val(e.color.toHex());
@@ -19,6 +26,7 @@ $(document).ready(function(){
 
   $('#cp1').change(function(){
     $('#currentSwatch').css('background-color', $('#cp1').val());
+    $('#currentSwatch').colorpicker('setValue', $('#cp1').val());
     color = $('#cp1').val();
   });
 
@@ -92,6 +100,7 @@ function switchColor(){
         'background-image': 'none'
       });
       $('#cp1').val(color);
+      $('#currentSwatch').colorpicker('setValue', $('#cp1').val());
     }
     console.log(color);
   });
