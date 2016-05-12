@@ -62,6 +62,20 @@ angular.module('emailDogsApp')
 	}
 
 
+
+	// Set background tracing url
+	$('#traceBG').change(function(){
+		console.log($('#traceBG').val());
+		if($('#traceBG').val() !== '') {
+		  $('#paletteContainer').addClass('hasTraceBG');
+		  $('.hasTraceBG').css('background-image', 'url(' + $(this).val() + ')');
+		} else {
+		  $('#paletteContainer').removeClass('hasTraceBG');
+		  $('#paletteContainer').css('background-image', 'url(../images/bg.jpg)');
+		}
+	});
+
+
 	// Download png of generated image
 	$("#imgDownload").click(function() {
 	  html2canvas($("#snippet2"), {
@@ -105,6 +119,11 @@ angular.module('emailDogsApp')
 	  $scope.curColor = e.color.toHex();
 	  $scope.curSwatchStyle = {'background-color': $scope.curColor,'background-image': 'none'};
 	});
+
+	  // Selects html code snippet on click in text field
+	  $('#snippet').click(function(){
+	    $(this).select();
+	  })
 
 	// "private" functions are not actually private but please think if that like they are.
 
