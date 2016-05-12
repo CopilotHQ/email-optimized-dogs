@@ -247,3 +247,55 @@ function rgbToHex(col)
     return colHex;
   }
 }
+
+
+// Drag and Drop Palette Creator
+  function paletteFromImage(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('.imageUploadContainer').hide();
+        $('.imageUploadImage').attr('src', e.target.result);
+        $('.imageUploadContent').show();
+
+        var ctimage = $('.imageUploadImage')[0];
+        var colorThief = new ColorThief();
+        var cp = colorThief.getPalette(ctimage, 15, 6);
+
+        $('#paletteContainer').addClass('hasTraceBG');
+        $('.hasTraceBG').css('background-image', 'url(' + e.target.result + ')');
+
+        for(var i=0;i<15;i++) {
+          var swatch = rgbToHex('rgb('+cp[i][0]+','+cp[i][1]+','+cp[i][2]+')').substring(1);
+
+          $('<div class="swatch pictureSwatch" style="background: #' + swatch + '" data-color="' + swatch + '"></div>').prependTo('#pictureSwatches');
+
+          $('#pictureSwatches').css('display','flex');
+        }
+
+        $('.image-title').html(input.files[0].name);
+
+      };
+
+      reader.readAsDataURL(input.files[0]);
+
+    } else {
+      removeUpload();
+    }
+  }
+
+  function removeUpload() {
+    $('.imageUploadInput').replaceWith($('.imageUploadInput').clone());
+    $('.imageUploadContent').hide();
+    $('.imageUploadContainer').removeClass('imageOver').show();
+    $('.pictureSwatch').remove();
+    $('#paletteContainer').removeClass('hasTraceBG');
+    $('#paletteContainer').css('background-image', 'url(../images/bg.jpg)');
+    $('#pictureSwatches').css('display','none');
+  }
+  $('.imageUploadContainer').bind('dragover', function () {
+    $('.imageUploadContainer').addClass('imageOver');
+  });
+  $('.imageUploadContainer').bind('dragleave', function () {
+    $('.imageUploadContainer').removeClass('imageOver');
+  });

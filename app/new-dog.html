@@ -61,12 +61,30 @@
 
           <div class="row">
             <div class="col-xs-12">
-              <input id="traceBG" type="text" class="form-control" placeholder="Paste URL to trace image" />
+              <div class="imageUploadContainer">
+                <input class="imageUploadInput" type='file' onchange="paletteFromImage(this);" accept="image/*" /></input>
+                <div class="drag-text">
+                  Drop reference image to trace
+                </div>
+              </div>
+              <div class="imageUploadContent">
+                <img class="imageUploadImage" src="#" alt="your image" />
+                <div class="imageTitleWrap">
+                  <a onclick="removeUpload()" class="removeImage">Remove reference image</a>
+                </div>
+
+                <div id="pictureSwatches" class="swatches">
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="row">
-            <div id="swatches">
+
+          </div>
+
+          <div class="row">
+            <div id="swatches" class="swatches">
               <div class="swatch" data-color="transparent"></div><br>
             </div>
           </div>
@@ -157,6 +175,7 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
     <!-- endbuild -->
 
+    <script src="scripts/color-thief.js"></script>
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
