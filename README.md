@@ -5,15 +5,18 @@ A tool for creating dogs (and other pixel artworks) that are optimized for email
 1. Clone the repo `git clone https://github.com/CopilotHQ/email-optimized-dogs.git`
 2. Install NPM packages `npm install`
 3. Install Bower libraries `bower install`
- 
+
+
 ## Developing Locally
-This repo is built using the [yeoman webapp generator](https://github.com/yeoman/generator-webapp), so it's pretty darn easy to spin up your development environment. All you have to do is run `gulp serve`.
+This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.15.1.
 
-## Building
-Run `gulp build`.
+## Build & development
 
-I haven't set up the gulpfile well yet, so any new folders you add will need to be manually transferred from app to dist after you build.
+Run `gulp` to build.  Your files will be moved to the dist/ directory.
 
-@TODO - Fix above issue.
+Run `gulp serve` for in browser preview with live updates.
+
+If you add new bower files, run `gulp bower` to run wiredep (which will inject the required script tags).
 
 ![Email Dogs](http://emaildog.club/images/dogs/dog_003.png)

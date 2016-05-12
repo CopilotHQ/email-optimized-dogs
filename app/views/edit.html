@@ -1,0 +1,65 @@
+<div class="dogGrid">
+  <div class="card-container flatTop">
+    <div id="paletteContainer">
+      <div id="palette" ng-bind-html="myTemplate" ng-mousedown="paintPixels($event)" ng-mousemove="paintPixels($event)"></div>
+    </div>
+
+    <div class="container-fluid" id="card-content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="currentSwatch" ng-style="curSwatchStyle"></div>
+          <input id="cp1" type="text" class="form-control currentSwatch-input" ng-value="curColor" readonly="true" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <input id="traceBG" type="text" class="form-control" placeholder="Paste URL to trace image" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="swatches">
+          <div class="swatch" ng-click="switchColor('transparent')"></div><br>
+          <div ng-repeat="color in swatches" ng-class="{swatch: true, selectedSwatch: curColor == '#'+color}" style="background: #{{color}}" ng-click="switchColor(color)"></div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-block btn-flatTop" id="getCode" ng-click="showCodeModal()"><span aria-hidden="true" class="iconic iconic-code"></span> Get the code</button>
+
+  </div>
+</div>
+
+<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="Get the Code">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Wow! That's beautiful!</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="text-center">
+          <div id="snippet2"></div>
+          <br />
+
+          <div class="btn-group" role="group" aria-label="Pixel size">
+            <button type="button" id="size-small" class="btn btn-secondary">Small</button>
+            <button type="button" id="size-medium" class="btn btn-secondary">Medium</button>
+            <button type="button" id="size-large" class="btn btn-secondary">Large</button>
+          </div>
+          <input type="button" id="imgDownload" class="btn btn-secondary" value="Download" download="emaildog.png">
+        </div>
+
+        <textarea id="snippet" readonly="readonly"></textarea>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

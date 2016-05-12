@@ -1,0 +1,8 @@
+<div id="dogGrid" class="dogGrid dogList">
+  <a href="#/edit" class="card-container">
+    <div>Make Your Own</div>
+  </a>
+  <a ng-repeat="tID in templates" ng-href="#/edit?templateID={{tID}}" class="card-container">
+  	<img ng-src="images/templates/{{tID}}.png" />
+  </a>
+</div>
