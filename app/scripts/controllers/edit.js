@@ -31,7 +31,7 @@ angular.module('emailDogsApp')
 	      $scope.curSwatchStyle = {'background-color': 'transparent','background-image': 'url(\"images/bg.jpg\")'};
 	    } else {
 	      $scope.curSwatchStyle = {'background-color': $scope.curColor,'background-image': 'none'};
-//	      $('#currentSwatch').colorpicker('setValue', $('#cp1').val()); // What does this do?
+	      $('#currentSwatch').colorpicker('setValue', $scope.curColor);
 	    }
 	}
 
@@ -94,6 +94,18 @@ angular.module('emailDogsApp')
       $scope.confirmationModal("Are you sure you want to clear the canvas?", "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", "clear canvas", loadFromLibrary);
     });
 
+    /** Make swatches work **/
+	$('#currentSwatch').colorpicker({
+	  create: function() {
+	    color: $scope.curColor;
+	  }
+	});
+
+	$('#currentSwatch').colorpicker().on('changeColor', function(e) {
+	  $scope.curColor = e.color.toHex();
+	  $scope.curSwatchStyle = {'background-color': $scope.curColor,'background-image': 'none'};
+	});
+
 	// "private" functions are not actually private but please think if that like they are.
 
 	function loadFromLibrary(template) {
@@ -116,5 +128,20 @@ angular.module('emailDogsApp')
 	function loadFromLocalStorage(item) {
 	  $scope.myTemplate = localStorage.getItem('pixels');
 	  console.log("Load from Local Storage Complete");
+	}
+
+
+	// Translate RGB to Hex
+	function rgbToHex(col)
+	{
+	  if(col.charAt(0)=='r') {
+	    col=col.replace('rgb(','').replace(')','').split(',');
+	    var r=parseInt(col[0], 10).toString(16);
+	    var g=parseInt(col[1], 10).toString(16);
+	    var b=parseInt(col[2], 10).toString(16);
+	    r=r.length==1?'0'+r:r; g=g.length==1?'0'+g:g; b=b.length==1?'0'+b:b;
+	    var colHex='#'+r+g+b;
+	    return colHex;
+	  }
 	}
   }]);
