@@ -18,7 +18,8 @@
     "canvas2image": "*",
     "filesaver": "*",
     "canvas-to-Blob.js": "*",
-    "mjolnic-bootstrap-colorpicker": "bootstrap-colorpicker#^2.3.3"
+    "mjolnic-bootstrap-colorpicker": "bootstrap-colorpicker#^2.3.3",
+    "clipboard": "^1.5.10"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",

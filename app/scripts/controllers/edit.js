@@ -18,12 +18,14 @@ angular.module('emailDogsApp')
   	$scope.pictureSwatches = [];
 
   	$scope.loadTemplate = function () {
-	  templateID = getUrlParameter('templateID');
+	     templateID = getUrlParameter('templateID');
 
-	  if(templateID !== undefined) {
-	    loadFromLibrary('../templates/' + templateID + '.html');
-	  }
-	};
+  	  if(templateID !== undefined) {
+  	    loadFromLibrary('../templates/' + templateID + '.html');
+  	  }
+  	}
+
+  new Clipboard('.btn');
 
 	$scope.switchColor = function (newColor){
 	    $scope.curColor = (newColor === 'transparent')? '' : '#'+newColor;
@@ -154,7 +156,7 @@ angular.module('emailDogsApp')
 	  console.log("Load from Local Storage Complete");
 	}
 
-	$scope.parseColor = function (color, toNumber) 
+	$scope.parseColor = function (color, toNumber)
 	{
 	  if (toNumber === true) {
 	    if (typeof color === 'number') {
