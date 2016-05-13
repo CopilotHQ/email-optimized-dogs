@@ -32,9 +32,10 @@ var lintScripts = lazypipe()
   .pipe($.jshint.reporter, 'jshint-stylish');
 
 var styles = lazypipe()
-  .pipe($.sass, {
+  .pipe($.sass.sync, {
     outputStyle: 'expanded',
-    precision: 10
+    precision: 10,
+    includePaths: ['.']
   })
   .pipe($.autoprefixer, 'last 1 version')
   .pipe(gulp.dest, '.tmp/styles');
@@ -46,6 +47,13 @@ var styles = lazypipe()
 gulp.task('styles', function () {
   return gulp.src(paths.styles)
     .pipe(styles());
+});
+
+gulp.task('styles:watch', function () {
+  return gulp.src(paths.styles)
+    .pipe(styles())
+    .pipe($.debug({title:'Change detected to styles:'}))
+    .pipe($.connect.reload());
 });
 
 gulp.task('lint:scripts', function () {
@@ -74,13 +82,6 @@ gulp.task('start:server', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.src(paths.styles)
-    .pipe($.watch(paths.styles))
-    .pipe($.plumber())
-    .pipe(styles())
-    .pipe($.debug({title:'Change detected to style:'}))
-    .pipe($.connect.reload());
-
   gulp.src(paths.views.files)
     .pipe($.watch(paths.views.files))
     .pipe($.plumber())
@@ -93,6 +94,8 @@ gulp.task('watch', function () {
 //    .pipe(lintScripts()) // The warnings are annoying me
     .pipe($.debug({title:'Change detected to script:'}))
     .pipe($.connect.reload());
+
+  gulp.watch(paths.styles, ['styles:watch']);
 
   gulp.watch('bower.json', ['bower']);
 });
