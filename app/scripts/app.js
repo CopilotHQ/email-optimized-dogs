@@ -35,6 +35,7 @@ angular
 // Setting some global stuff.
 angular.module('emailDogsApp')
   .controller('AppCtrl', ["$scope", "$location", function($scope, $location){
+    $scope.templates = ['dog_001','dog_002','dog_003','doge','moonmoon','dogbountyhunter','loveletter'];
     $scope.isMouseDown = false;
     $scope.mouseUp = function() {
       $scope.isMouseDown = false;
