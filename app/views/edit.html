@@ -27,7 +27,7 @@
               <a ng-click="removeUpload()" class="removeImage">Remove reference image</a>
             </div>
 
-            <div class="swatches" ng-if="imgLoaded">
+            <div class="swatches pictureSwatches" ng-if="imgLoaded">
               <div ng-repeat="color in pictureSwatches track by $index" ng-class="{swatch: true, selectedSwatch: curColor == '#'+color}" style="background: #{{color}}" ng-click="switchColor(color)"></div>
             </div>
           </div>
@@ -36,7 +36,7 @@
 
 
       <div class="row">
-        <div id="swatches">
+        <div class="swatches">
           <div class="swatch" ng-click="switchColor('transparent')"></div><br>
           <div ng-repeat="color in swatches" ng-class="{swatch: true, selectedSwatch: curColor == '#'+color}" style="background: #{{color}}" ng-click="switchColor(color)"></div>
         </div>
