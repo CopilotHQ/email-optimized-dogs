@@ -12,14 +12,12 @@ function createKey(htmlStr) {
 	var rows = (htmlStr.match(/<tr>/g) || []).length;
 	var columns = (htmlStr.match(/<td/g) || []).length / rows;
 	var storeLength = Math.ceil((rows * columns) / 31);
-	// console.log("Counted: "+columns+" columns and "+rows+" rows");
 
-	var pixels = htmlStr.replace(/ height="5" width="5"/g, "") 	// remove height and width attributes
-						.match(/<td[^>]*>/g) 					// remove everything that isn't a <td> tag
-						.join() 								// join the matches into a single string
-						.replace(/<td>/g, "0") 					// replace all empty cells with a 0
-						.match(/[0-9a-fA-F]{6}|0/g); 			// match all HEX numbers, leaving us with an array
-	// console.log(pixels);
+	var pixels = htmlStr.replace(/ height="5" width="5"/g, "")  // remove height and width attributes
+          						.match(/<td[^>]*>/g)                    // remove everything that isn't a <td> tag
+          						.join()                                 // join the matches into a single string
+          						.replace(/<td>/g, "0")                  // replace all empty cells with a 0
+          						.match(/[0-9a-fA-F]{6}|0/g);            // match all HEX numbers, leaving us with an array
 
 	var uniqueColors = [];
 	for(var i=0; i<pixels.length; i++) {
@@ -31,7 +29,6 @@ function createKey(htmlStr) {
 		}
 	}
 
-	// console.log(uniqueColors);
 	var result = [rows,columns];
 	for(i=0; i<uniqueColors.length; i++) {
 		result.push(uniqueColors[i].col);
@@ -46,3 +43,14 @@ function createKey(htmlStr) {
 function decodeKey(str) {
 
 }
+
+
+
+
+
+
+
+
+
+
+
