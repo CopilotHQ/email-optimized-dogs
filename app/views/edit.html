@@ -12,11 +12,28 @@
         </div>
       </div>
 
+
       <div class="row">
         <div class="col-xs-12">
-          <input id="traceBG" type="text" class="form-control" placeholder="Paste URL to trace image" />
+          <div class="imageUploadContainer">
+            <input class="imageUploadInput" type='file' onChange="angular.element(this).scope().paletteFromImage(this)" accept="image/*" /></input>
+            <div class="drag-text">
+              Drop reference image to trace
+            </div>
+          </div>
+          <div class="imageUploadContent">
+            <img class="imageUploadImage" src="#" alt="your image" />
+            <div class="imageTitleWrap">
+              <a ng-click="removeUpload()" class="removeImage">Remove reference image</a>
+            </div>
+
+            <div class="swatches" ng-if="imgLoaded">
+              <div ng-repeat="color in pictureSwatches track by $index" ng-class="{swatch: true, selectedSwatch: curColor == '#'+color}" style="background: #{{color}}" ng-click="switchColor(color)"></div>
+            </div>
+          </div>
         </div>
       </div>
+
 
       <div class="row">
         <div id="swatches">

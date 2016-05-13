@@ -12,8 +12,10 @@ angular.module('emailDogsApp')
   	$scope.myTemplate = "";
   	$scope.curColor = "#000000";
   	$scope.curSwatchStyle = {'background-color': '#000000','background-image': 'none'};
+  	$scope.imgLoaded = false;
 
     $scope.swatches = ['8b5e3c','c49a6c','594a42','726658','9b8579','c2b59b','e98c1b','f4cb4b','fffcc0','00658f','93c8d0','911710','d13c39','f9afaf','ee2a7b','662d91','ffffff','d1d3d4','a7a9ac','808285','58595b','000000'];
+  	$scope.pictureSwatches = [];
   	$scope.templates = ['dog_001','dog_002','dog_003','doge','moonmoon','dogbountyhunter','loveletter'];
 
   	$scope.loadTemplate = function () {
@@ -172,5 +174,57 @@ angular.module('emailDogsApp')
 	    return color;
 	  }
 	};
+
+	// Drag and Drop Palette Creator
+  $scope.paletteFromImage = function (input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('.imageUploadContainer').hide();
+        $('.imageUploadImage').attr('src', e.target.result);
+        $('.imageUploadContent').show();
+
+        var ctimage = $('.imageUploadImage')[0];
+        var colorThief = new ColorThief();
+        var cp = colorThief.getPalette(ctimage, 15, 6);
+
+        $('#paletteContainer').addClass('hasTraceBG');
+        $('.hasTraceBG').css('background-image', 'url(' + e.target.result + ')');
+
+        for(var i=0;i<cp.length;i++) {
+          $scope.pictureSwatches.push($scope.parseColor((cp[i][0]<<16) | (cp[i][1]<<8) | cp[i][2], false).substr(-6));
+
+          $('#pictureSwatches').css('display','flex');
+        }
+
+        $('.image-title').html(input.files[0].name);
+        $scope.imgLoaded = true;
+        $scope.$apply();
+      };
+
+      reader.readAsDataURL(input.files[0]);
+
+    } else {
+      removeUpload();
+    }
+  }
+
+  $scope.removeUpload = function () {
+    $('.imageUploadInput').replaceWith($('.imageUploadInput').clone());
+    $('.imageUploadContent').hide();
+    $('.imageUploadContainer').removeClass('imageOver').show();
+    $('.pictureSwatch').remove();
+    $('#paletteContainer').removeClass('hasTraceBG');
+    $('#paletteContainer').css('background-image', 'url(../images/bg.jpg)');
+    $('#pictureSwatches').css('display','none');
+    $scope.imgLoaded = false;
+    $scope.$apply();
+  }
+  $('.imageUploadContainer').bind('dragover', function () {
+    $('.imageUploadContainer').addClass('imageOver');
+  });
+  $('.imageUploadContainer').bind('dragleave', function () {
+    $('.imageUploadContainer').removeClass('imageOver');
+  });
 
   }]);

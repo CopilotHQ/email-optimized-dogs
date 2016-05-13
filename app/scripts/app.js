@@ -60,7 +60,6 @@ angular.module('emailDogsApp')
 
     $scope.isEdit = false;
     $scope.$on("$locationChangeSuccess", function () {
-      console.log($location.path());
       $scope.isEdit = $location.path() == '/edit';
     });
 

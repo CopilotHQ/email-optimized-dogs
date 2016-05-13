@@ -90,7 +90,7 @@ gulp.task('watch', function () {
   gulp.src(paths.scripts)
     .pipe($.watch(paths.scripts))
     .pipe($.plumber())
-    .pipe(lintScripts())
+//    .pipe(lintScripts()) // The warnings are annoying me
     .pipe($.debug({title:'Change detected to script:'}))
     .pipe($.connect.reload());
 
@@ -99,7 +99,7 @@ gulp.task('watch', function () {
 
 gulp.task('serve', function (cb) {
   runSequence('clean:tmp',
-    ['lint:scripts'],
+//    ['lint:scripts'],
     ['start:client'],
     'watch', cb);
 });
