@@ -14,7 +14,9 @@ function createKey(htmlStr) {
 	var columns = (htmlStr.match(/<td/g) || []).length / rows;
 	var storeLength = Math.ceil((rows * columns) / 31);
 
-	var pixels = htmlStr.replace(/ height="5" width="5"/g, "")  // remove height and width attributes
+	var pixels = htmlStr.replace(/ height="5"/g, "")  					// remove height attribute
+											.replace(/ width="5"/g, "")  					  // remove width attribute
+											.replace(/ bgcolor(="")?/g, "")  				// remove bgcolor attribute <- bug fix
           						.match(/<td[^>]*>/g)                    // remove everything that isn't a <td> tag
           						.join()                                 // join the matches into a single string
           						.replace(/<td>/g, "0")                  // replace all empty cells with a 0
@@ -43,7 +45,7 @@ function createKey(htmlStr) {
 			result.push(uniqueColors[i].idx[j].toString(36));
 		}
 	}
-	
+
 	return result.join();
 }
 
