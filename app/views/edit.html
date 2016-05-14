@@ -27,7 +27,7 @@
               <a ng-click="removeUpload()" class="removeImage">Remove reference image</a>
             </div>
 
-            <div class="swatches" ng-if="imgLoaded">
+            <div class="swatches pictureSwatches" ng-if="imgLoaded">
               <div ng-repeat="color in pictureSwatches track by $index" ng-class="{swatch: true, selectedSwatch: curColor == '#'+color}" style="background: #{{color}}" ng-click="switchColor(color)"></div>
             </div>
           </div>
@@ -36,7 +36,7 @@
 
 
       <div class="row">
-        <div id="swatches">
+        <div class="swatches">
           <div class="swatch" ng-click="switchColor('transparent')"></div><br>
           <div ng-repeat="color in swatches" ng-class="{swatch: true, selectedSwatch: curColor == '#'+color}" style="background: #{{color}}" ng-click="switchColor(color)"></div>
         </div>
@@ -67,6 +67,7 @@
             <button type="button" id="size-medium" class="btn btn-secondary">Medium</button>
             <button type="button" id="size-large" class="btn btn-secondary">Large</button>
           </div>
+          <button class="btn btn-secondary" data-clipboard-target="#snippet2">Copy for gmail</button>
           <input type="button" id="imgDownload" class="btn btn-secondary" value="Download" download="emaildog.png">
         </div>
 

@@ -16,6 +16,8 @@ angular.module('emailDogsApp')
     $scope.swatches = ['8b5e3c','c49a6c','594a42','726658','9b8579','c2b59b','e98c1b','f4cb4b','fffcc0','00658f','93c8d0','911710','d13c39','f9afaf','ee2a7b','662d91','ffffff','d1d3d4','a7a9ac','808285','58595b','000000'];
   	$scope.pictureSwatches = [];
 
+    new Clipboard('.btn');
+
 /**
   	$scope.loadTemplate = function () {
   	  templateID = getUrlParameter('templateID');
@@ -25,6 +27,7 @@ angular.module('emailDogsApp')
       }
   	};
 **/
+
   	$scope.switchColor = function (newColor){
   	    $scope.curColor = (newColor === 'transparent')? '' : '#'+newColor;
 
