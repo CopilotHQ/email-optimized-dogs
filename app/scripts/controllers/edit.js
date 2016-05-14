@@ -56,6 +56,7 @@ angular.module('emailDogsApp')
   	      'width': px,
   	      'height': px
   	    });
+        $('#snippet2').html( decodeKey( createKey( $('#snippet2').html() ), px) );
   	  	$('#snippet').text($('#snippet2').html().trim());
   	  });
   	}
@@ -64,8 +65,9 @@ angular.module('emailDogsApp')
   	paletteSizer('large', '10');
 
   	$scope.showCodeModal = function(){
-  	  $('#snippet2').html($('#palette').html());
-  	  $('#snippet').text($('#snippet2').html().trim());
+      // This cleans the HTML for sharing.
+  	  $('#snippet2').html( decodeKey( createKey( $('#palette').html() ) ) );
+  	  $('#snippet').text( $('#snippet2').html().trim() );
   	  $('#codeModal').modal('show');
   	  // console.log(createKey($('#snippet').text());
   	};

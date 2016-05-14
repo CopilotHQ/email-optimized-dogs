@@ -14,8 +14,8 @@ function createKey(htmlStr) {
 	var columns = (htmlStr.match(/<td/g) || []).length / rows;
 	var storeLength = Math.ceil((rows * columns) / 31);
 
-	var pixels = htmlStr.replace(/ height="5"/g, "")  					// remove height attribute
-											.replace(/ width="5"/g, "")  					  // remove width attribute
+	var pixels = htmlStr.replace(/ height="[0-9]+"/g, "")  					// remove height attribute
+											.replace(/ width="[0-9]+"/g, "")  					  // remove width attribute
 											.replace(/ bgcolor(="")?/g, "")  				// remove bgcolor attribute <- bug fix
           						.match(/<td[^>]*>/g)                    // remove everything that isn't a <td> tag
           						.join()                                 // join the matches into a single string
@@ -49,7 +49,8 @@ function createKey(htmlStr) {
 	return result.join();
 }
 
-function decodeKey(str) {
+function decodeKey(str, size) {
+	var size = (undefined==size)? 5 : size;
 	var key = str.split(',');
 	var rows = key[0];
 	var columns = key[1];
@@ -91,8 +92,8 @@ function decodeKey(str) {
 		for(var j=0; j<columns; j++)
 		{
 			result += '<td'+
-				(0==i? ' width="5"' : '')+
-				(0==j? ' height="5"' : '')+
+				(0==i? ' width="'+size+'"' : '')+
+				(0==j? ' height="'+size+'"' : '')+
 				('0'==pixels[i*columns+j]? '' : ' bgcolor="#'+pixels[i*columns+j]+'"')+
 				"></td>";
 		}
