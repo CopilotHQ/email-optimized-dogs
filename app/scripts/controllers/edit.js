@@ -67,7 +67,7 @@ angular.module('emailDogsApp')
   	  $('#snippet2').html($('#palette').html());
   	  $('#snippet').text($('#snippet2').html().trim());
   	  $('#codeModal').modal('show');
-//  	  createKey($('#snippet').text());
+  	  // createKey($('#snippet').text());
   	};
 
 

@@ -109,6 +109,11 @@ angular.module('emailDogsApp')
       });
     }
 
+    function loadFromKey(key) {
+      $scope.myTemplate = decodeKey(key);
+      console.log("Load from Key Complete");
+    }
+
     function loadFromLocalStorage(item) {
       $scope.myTemplate = localStorage.getItem('pixels');
       console.log("Load from Local Storage Complete");
