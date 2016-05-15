@@ -35,8 +35,14 @@ angular
 // Setting some global stuff.
 angular.module('emailDogsApp')
   .controller('AppCtrl', ["$scope", "$location", "$http", function($scope, $location, $http){
+    // These templates are displayed on the home page.  They require a PNG in the images/templates dir
     $scope.templates = ['dog_001','dog_002','dog_003','doge','moonmoon','dogbountyhunter','loveletter','pug'];
+    // These are named templates which are not displayed on the main page
+    var hiddenTemplates = ['aweber', 'pinkcream'];
+    // This is used to store the HTML Table code which is our template.
     $scope.myTemplate = "";
+
+    // The following is used to track mouse clicks and drags.
     $scope.isMouseDown = false;
     $scope.mouseUp = function() {
       $scope.isMouseDown = false;
@@ -60,10 +66,15 @@ angular.module('emailDogsApp')
       $('#confirmationModal').modal('show');
     };
 
+    // This allows us to execute global scope code which is nonetheless specific to the edit page
     $scope.isEdit = false;
     $scope.$on("$locationChangeSuccess", function () {
       $scope.isEdit = $location.path() == '/edit';
       if($scope.isEdit) {
+        if($location.search()["key"]) {
+          loadFromKey($location.search()["key"]);
+          return;
+        }
         loadFromLibrary($location.search()["templateID"]);
       }
     });
@@ -78,21 +89,25 @@ angular.module('emailDogsApp')
 
     // Load the current state of the pallete from local storage
     $scope.loadPixels = function() {
-      confirmationModal("Are you sure you want to load from your local storage?", "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", "load", loadFromLocalStorage);
+      confirmationModal("Are you sure you want to load from your local storage?", 
+        "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", 
+        "load", loadFromLocalStorage);
     };
 
 
     // Reset drawing canvas to blank
-    // @TODO add confirmation before clearing
     $scope.clearPixels = function(){
-      confirmationModal("Are you sure you want to clear the canvas?", "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", "clear canvas", loadFromLibrary);
+      confirmationModal("Are you sure you want to clear the canvas?", 
+        "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", 
+        "clear canvas", loadFromLibrary);
     };
 
 
-    // "private" functions are not actually private but please think if that like they are.
+    // Loads a named template from our library
     function loadFromLibrary(template) {
-      // Limit us to approved templates
-      if(-1 === $scope.templates.indexOf(template)) {
+      // Limit us to known & approved templates
+      if(-1 === $scope.templates.indexOf(template) && 
+        -1 === hiddenTemplates.indexOf(template)) {
         template = 'grid';
       }
       // Clear current template or else it may not reload the page.
@@ -109,6 +124,21 @@ angular.module('emailDogsApp')
       });
     }
 
+    // Loads a template from a hash key stored in the URL GET parameter
+    function loadFromKey(key) {
+      var template = decodeKey(key);
+
+      // If there was an error decoding the key, attempt to load a template
+      if(template == DECODE_ERROR) {
+        loadFromLibrary($location.search()["templateID"]);
+        return;
+      }
+
+      $scope.myTemplate = decodeKey(key);
+      console.log("Load from Key Complete");
+    }
+
+    // Loads a template from local storage, previously saved there by the savePixels() function.
     function loadFromLocalStorage(item) {
       $scope.myTemplate = localStorage.getItem('pixels');
       console.log("Load from Local Storage Complete");
