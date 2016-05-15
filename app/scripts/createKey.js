@@ -1,3 +1,6 @@
+// An error message which should probably be more descriptive.
+var DECODE_ERROR = "ERROR: Decode failed";
+
 /**
  * Creates a key
  */
@@ -14,8 +17,8 @@ function createKey(htmlStr) {
 	var columns = (htmlStr.match(/<td/g) || []).length / rows;
 	var storeLength = Math.ceil((rows * columns) / 31);
 
-	var pixels = htmlStr.replace(/ height="[0-9]+"/g, "")  					// remove height attribute
-											.replace(/ width="[0-9]+"/g, "")  					  // remove width attribute
+	var pixels = htmlStr.replace(/ height="[0-9]+"/g, "")  			// remove height attribute
+											.replace(/ width="[0-9]+"/g, "")  			// remove width attribute
 											.replace(/ bgcolor(="")?/g, "")  				// remove bgcolor attribute <- bug fix
           						.match(/<td[^>]*>/g)                    // remove everything that isn't a <td> tag
           						.join()                                 // join the matches into a single string
@@ -66,25 +69,41 @@ function decodeKey(str, size) {
 		index += storeLength;
 	}
 
-	var pixels = new Array(rows*columns); // Create a new array with RxC elements
-	uniqueColors.forEach(function(itm) 
-	{
-		var count = 0;
-		for(var i=0; i<itm.idx.length; i++) 
+	try {
+		var pixels = new Array(rows*columns); // Create a new array with RxC elements
+		uniqueColors.forEach(function(itm) 
 		{
-			// Convert to binary
-			var val = ('0000000000000000000000000000000' + parseInt(itm.idx[i], 36).toString(2)).substr(-31);
-			for(var j=val.length-1; j>=0; j--) 
+			var count = 0;
+			for(var i=0; i<itm.idx.length; i++) 
 			{
-				if(val.charAt(j) == "1") 
+				// Convert to binary
+				var val = ('0000000000000000000000000000000' + parseInt(itm.idx[i], 36).toString(2)).substr(-31);
+				for(var j=val.length-1; j>=0; j--) 
 				{
-					pixels[count] = itm.col;
+					if(val.charAt(j) == "1") 
+					{
+						// We should not be overwriting pixels.  If we do, there is something wrong with the key.
+						if (pixels[count] != undefined) throw {name:DECODE_ERROR, message:"Pixel was overwritten at "+count};
+						pixels[count] = itm.col;
+					}
+					count++;
 				}
-				count++;
 			}
-		}
-	});
+		});
+	} catch (e) {
+		console.log(e.message);
+		return e.name;
+	}
 
+	// We should not have any undefined pixels remaining.  If we do there is something wrong with the key.
+	for(var i=0; i<pixels.length; i++) {
+		if(typeof pixels[i] == 'undefined') {
+			console.log("Some pixels were undefined.");
+			return DECODE_ERROR;
+		}
+	}
+
+	// Create HTML from pixel array
 	var result = '<table style="display: inline-block;" cellpadding="0" cellspacing="0"><tbody>';
 	for(var i=0; i<rows; i++)
 	{
@@ -103,14 +122,3 @@ function decodeKey(str, size) {
 	
 	return result;
 }
-
-
-
-
-
-
-
-
-
-
-
