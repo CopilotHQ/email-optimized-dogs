@@ -64,6 +64,10 @@ angular.module('emailDogsApp')
     $scope.$on("$locationChangeSuccess", function () {
       $scope.isEdit = $location.path() == '/edit';
       if($scope.isEdit) {
+        if($location.search()["key"]) {
+          loadFromKey($location.search()["key"]);
+          return;
+        }
         loadFromLibrary($location.search()["templateID"]);
       }
     });

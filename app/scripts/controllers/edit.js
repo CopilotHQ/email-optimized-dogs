@@ -69,7 +69,7 @@ angular.module('emailDogsApp')
   	  $('#snippet2').html( decodeKey( createKey( $('#palette').html() ) ) );
   	  $('#snippet').text( $('#snippet2').html().trim() );
   	  $('#codeModal').modal('show');
-  	  // console.log(createKey($('#snippet').text());
+  	  console.log("http://"+location.host+"/#/edit?key="+createKey($('#snippet').text()));
   	};
 
 
