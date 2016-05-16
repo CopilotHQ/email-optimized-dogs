@@ -17,6 +17,7 @@ var yeoman = {
 var paths = {
   scripts: [yeoman.app + '/scripts/**/*.js'],
   styles: [yeoman.app + '/styles/**/*.scss'],
+  templates: [yeoman.app + '/templates/**/*.html'],
   views: {
     main: yeoman.app + '/index.html',
     files: [yeoman.app + '/views/**/*.html']
@@ -145,7 +146,7 @@ gulp.task('client:build', ['html', 'styles'], function () {
     .pipe(cssFilter)
     .pipe($.minifyCss({cache: true}))
     .pipe(cssFilter.restore())
-    .pipe($.rev())
+    .pipe($.if("!index.html", $.rev()))
     .pipe($.revReplace())
     .pipe(gulp.dest(yeoman.dist));
 });
@@ -175,8 +176,13 @@ gulp.task('copy:fonts', function () {
     .pipe(gulp.dest(yeoman.dist + '/fonts'));
 });
 
+gulp.task('copy:templates', function () {
+  return gulp.src(yeoman.app + '/templates/**/*')
+    .pipe(gulp.dest(yeoman.dist + '/templates'));
+});
+
 gulp.task('build', ['clean:dist'], function () {
-  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build']);
+  runSequence(['images', 'copy:extras', 'copy:fonts', 'copy:templates', 'client:build']);
 });
 
 gulp.task('default', ['build']);
