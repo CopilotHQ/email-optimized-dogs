@@ -116,7 +116,7 @@ angular.module('emailDogsApp')
 	    $(this).select();
 	  });
 
-  	$scope.parseColor = function (color, toNumber) 
+  	$scope.parseColor = function (color, toNumber)
   	{
   	  if (toNumber === true) {
   	    if (typeof color === 'number') {
@@ -186,6 +186,17 @@ angular.module('emailDogsApp')
     });
     $('.imageUploadContainer').bind('dragleave', function () {
       $('.imageUploadContainer').removeClass('imageOver');
+    });
+
+
+    // Show HTML block
+    $('#grabHtml').on('click', function(){
+      var isVisible = $('#snippet').is(':visible');
+      if(isVisible === true) {
+        $('#snippet').fadeOut();
+      } else {
+        $('#snippet').fadeIn();
+      }
     });
 
   }]);
