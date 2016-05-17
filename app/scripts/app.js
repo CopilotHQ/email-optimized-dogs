@@ -36,7 +36,7 @@ angular
 angular.module('emailDogsApp')
   .controller('AppCtrl', ["$scope", "$location", "$http", function($scope, $location, $http){
     // These templates are displayed on the home page.  They require a PNG in the images/templates dir
-    $scope.templates = ['dog_001','dog_002','dog_003','doge','moonmoon','dogbountyhunter','loveletter','pug'];
+    $scope.templates = ['dog_001','dog_002','dog_003','doge','moonmoon','hotdog','dogbountyhunter','loveletter','pug'];
     // These are named templates which are not displayed on the main page
     var hiddenTemplates = ['aweber', 'pinkcream'];
     // This is used to store the HTML Table code which is our template.
@@ -89,16 +89,16 @@ angular.module('emailDogsApp')
 
     // Load the current state of the pallete from local storage
     $scope.loadPixels = function() {
-      confirmationModal("Are you sure you want to load from your local storage?", 
-        "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", 
+      confirmationModal("Are you sure you want to load from your local storage?",
+        "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.",
         "load", loadFromLocalStorage);
     };
 
 
     // Reset drawing canvas to blank
     $scope.clearPixels = function(){
-      confirmationModal("Are you sure you want to clear the canvas?", 
-        "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.", 
+      confirmationModal("Are you sure you want to clear the canvas?",
+        "Keep in mind, there's no way to get your beautiful artwork back, so make sure to save it out first.",
         "clear canvas", loadFromLibrary);
     };
 
@@ -106,7 +106,7 @@ angular.module('emailDogsApp')
     // Loads a named template from our library
     function loadFromLibrary(template) {
       // Limit us to known & approved templates
-      if(-1 === $scope.templates.indexOf(template) && 
+      if(-1 === $scope.templates.indexOf(template) &&
         -1 === hiddenTemplates.indexOf(template)) {
         template = 'grid';
       }
