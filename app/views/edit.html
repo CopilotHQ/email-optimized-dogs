@@ -60,7 +60,6 @@
 
         <div class="text-center">
           <div id="snippet2"></div>
-          <br />
 
           <div class="btn-group" role="group" aria-label="Pixel size">
             <div class="dropdown">
@@ -75,16 +74,28 @@
               </ul>
             </div>
           </div>
+
+          <button class="btn btn-secondary" ng-click="copy4Gmail()"><span aria-hidden="true" class="iconic iconic-envelope-closed"></span> Copy for gmail</button>
+          <button type="submit" id="imgDownload" class="btn btn-secondary" value="Download" download="emaildog.png"><span aria-hidden="true" class="iconic iconic-image-portrait"></span></button>
+          <button class="btn btn-secondary" ng-click="showSnippet('#snippet')"><span aria-hidden="true" class="iconic iconic-code"></span></button>
+          <button class="btn btn-secondary" ng-click="showSnippet('#canvasLink')"><span aria-hidden="true" class="iconic iconic-link-intact"></span></button>
+
+        </div>
+
+        <div>
+          <div class="snippetContainer">
+            <textarea id="snippet" class="copyCode" ng-click="selectSnippet('#snippet')" readonly="readonly"></textarea>
+          </div>
+          <div class="snippetContainer">
+            <button class="copyCanvasLink" ng-click="copySnippet('#canvasLink')">copy</button>
+            <textarea id="canvasLink" class="copyCode" ng-click="selectSnippet('#canvasLink')" readonly="readonly"></textarea>
+          </div>
         </div>
 
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-secondary" ng-click="copy4Gmail()"><span aria-hidden="true" class="iconic iconic-envelope-closed"></span> Copy for gmail</button>
-        <button type="submit" id="imgDownload" class="btn btn-secondary" value="Download" download="emaildog.png"><span aria-hidden="true" class="iconic iconic-image-portrait"></span> Download</button>
-        <button class="btn btn-secondary" id="grabHtml"><span aria-hidden="true" class="iconic iconic-code"></span> html</button>
-
-        <textarea id="snippet" readonly="readonly"></textarea>
+        Test
       </div>
     </div>
   </div>

@@ -66,12 +66,34 @@ angular.module('emailDogsApp')
       // This cleans the HTML for sharing.
   	  $('#snippet2').html( decodeKey( createKey( $('#palette').html() ) ) );
   	  $('#snippet').text( $('#snippet2').html().trim() );
+      $('#canvasLink').text("http://"+location.host+"/#/edit?key="+createKey($('#snippet').text()));
   	  $('#codeModal').modal('show');
   	  console.log("http://"+location.host+"/#/edit?key="+createKey($('#snippet').text()));
   	};
 
+    $scope.copySnippet = function(snippetContainer) {
+      clipboard.copy({'text/plain': $(snippetContainer).html()});
+    }
+
     $scope.copy4Gmail = function() {
       clipboard.copy({'text/html': "<br/>" + $('#snippet2').html() + "<br/>"});
+    }
+
+    // Show HTML block
+    $scope.showSnippet = function(container) {
+      var isVisible = $(container).is(':visible');
+      if(isVisible === true) {
+        $(container).parent().hide();
+      } else {
+        $(container).parent().siblings().hide();
+        $(container).parent().show();
+        $(container).select();
+      }
+    }
+
+    // Click on snippet to select
+    $scope.selectSnippet = function(snippet){
+      $(snippet).select();
     }
 
 
@@ -114,9 +136,9 @@ angular.module('emailDogsApp')
   	});
 
 	  // Selects html code snippet on click in text field
-	  $('#snippet').click(function(){
-	    $(this).select();
-	  });
+	  $scope.selectText = function() {
+      console.log("Working");
+	  }
 
   	$scope.parseColor = function (color, toNumber)
   	{
@@ -188,17 +210,6 @@ angular.module('emailDogsApp')
     });
     $('.imageUploadContainer').bind('dragleave', function () {
       $('.imageUploadContainer').removeClass('imageOver');
-    });
-
-
-    // Show HTML block
-    $('#grabHtml').on('click', function(){
-      var isVisible = $('#snippet').is(':visible');
-      if(isVisible === true) {
-        $('#snippet').fadeOut();
-      } else {
-        $('#snippet').fadeIn();
-      }
     });
 
   }]);
