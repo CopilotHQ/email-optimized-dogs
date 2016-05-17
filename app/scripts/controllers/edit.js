@@ -80,7 +80,7 @@ angular.module('emailDogsApp')
     }
 
     // Show HTML block
-    $scope.showSnippet = function(container) {
+    $scope.showSnippet = function(container, snippetType) {
       var isVisible = $(container).is(':visible');
       if(isVisible === true) {
         $(container).parent().hide();
@@ -88,6 +88,13 @@ angular.module('emailDogsApp')
         $(container).parent().siblings().hide();
         $(container).parent().show();
         $(container).select();
+
+        // Report snippet/link copy show
+        ga('send', 'event', {
+          eventCategory: 'Share',
+          eventAction: snippetType,
+          eventLabel: container
+        });
       }
     }
 
@@ -119,6 +126,13 @@ angular.module('emailDogsApp')
   	      a.download = 'emaildog.png';
   	      a.click();
   	      //Canvas2Image.saveAsPNG(canvas);
+
+          // Report img downloadEvent
+          ga('send', 'event', {
+            eventCategory: 'Shares',
+            eventAction: 'Download',
+            eventLabel: 'Download PNG from Modal'
+          });
   	    }
   	  });
   	});

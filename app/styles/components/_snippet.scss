@@ -18,9 +18,13 @@
   height: 200px;
 }
 
-#snippet2 {
+.previewContainer {
   display: block;
   margin: 0 auto 15px;
+}
+
+#snippet2 {
+  display: inline-block;
 }
 
 .snippetContainer {

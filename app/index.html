@@ -72,7 +72,10 @@
       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create','UA-77562622-1','auto');
-      ga('send', 'pageview');
+      $rootScope.$on('$stateChangeSuccess', function (event) {
+        $window.ga('send', 'pageview', $location.path());
+      });
+      //ga('send', 'pageview');
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
