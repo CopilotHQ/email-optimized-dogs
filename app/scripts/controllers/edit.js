@@ -77,6 +77,13 @@ angular.module('emailDogsApp')
 
     $scope.copy4Gmail = function() {
       clipboard.copy({'text/html': "<br/>" + $('#snippet2').html() + "<br/>"});
+
+      // Report copy for Gmail
+      ga('send', 'event', {
+        eventCategory: 'Shares',
+        eventAction: 'gmail',
+        eventLabel: '#gmailCopy'
+      });
     }
 
     // Show HTML block
@@ -131,7 +138,7 @@ angular.module('emailDogsApp')
           ga('send', 'event', {
             eventCategory: 'Shares',
             eventAction: 'Download',
-            eventLabel: 'Download PNG from Modal'
+            eventLabel: '#imgDownload'
           });
   	    }
   	  });
