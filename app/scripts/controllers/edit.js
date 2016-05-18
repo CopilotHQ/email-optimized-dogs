@@ -22,6 +22,7 @@ angular.module('emailDogsApp')
     $scope.shareURL = '';
     $scope.snippetText = '';
     $scope.previewTemplate = '';
+    $scope.sendUsALink = "chris.vqz@gmail.com";
 
   	$scope.switchColor = function (newColor){
   	    $scope.curColor = (newColor === 'transparent')? '' : '#'+newColor;
