@@ -69,6 +69,9 @@ angular.module('emailDogsApp')
     // This allows us to execute global scope code which is nonetheless specific to the edit page
     $scope.isEdit = false;
     $scope.$on("$locationChangeSuccess", function () {
+      // Analytics
+      ga('send', 'pageview');
+      
       $scope.isEdit = $location.path() == '/edit';
       if($scope.isEdit) {
         if($location.search()["key"]) {
