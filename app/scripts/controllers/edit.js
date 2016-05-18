@@ -16,15 +16,12 @@ angular.module('emailDogsApp')
     $scope.swatches = ['8b5e3c','c49a6c','594a42','726658','9b8579','c2b59b','e98c1b','f4cb4b','fffcc0','00658f','93c8d0','911710','d13c39','f9afaf','ee2a7b','662d91','ffffff','d1d3d4','a7a9ac','808285','58595b','000000'];
   	$scope.pictureSwatches = [];
 
-/**
-  	$scope.loadTemplate = function () {
-  	  templateID = getUrlParameter('templateID');
-
-  	  if(templateID !== undefined) {
-  	    loadFromLibrary('../templates/' + templateID + '.html');
-      }
-  	};
-**/
+    // These are used in the share codeModel
+    var shareKey = '';
+    var shareHTML = '';
+    $scope.shareURL = '';
+    $scope.snippetText = '';
+    $scope.previewTemplate = '';
 
   	$scope.switchColor = function (newColor){
   	    $scope.curColor = (newColor === 'transparent')? '' : '#'+newColor;
@@ -54,8 +51,9 @@ angular.module('emailDogsApp')
   	      'width': px,
   	      'height': px
   	    });
-        $('#snippet2').html( decodeKey( createKey( $('#snippet2').html() ), px) );
-  	  	$('#snippet').text($('#snippet2').html().trim());
+        $('#snippet2').html(  );
+        $scope.previewTemplate = shareHTML = decodeKey( shareKey , px);
+        $('#snippet').text( shareHTML );
   	  });
   	}
   	paletteSizer('small', '2');
@@ -63,12 +61,13 @@ angular.module('emailDogsApp')
   	paletteSizer('large', '10');
 
   	$scope.showCodeModal = function(){
-      // This cleans the HTML for sharing.
-  	  $('#snippet2').html( decodeKey( createKey( $('#palette').html() ) ) );
-  	  $('#snippet').text( $('#snippet2').html().trim() );
-      $('#canvasLink').text("http://"+location.host+"/#/edit?key="+createKey($('#snippet').text()));
+      shareKey = createKey( $('#palette').html() );
+      $scope.previewTemplate = shareHTML = decodeKey( shareKey );
+      $scope.shareURL = "http://"+location.host+"/#/edit?key="+shareKey;
+
+  	  $('#snippet').text( shareHTML );
+      $('#canvasLink').text( $scope.shareURL );
   	  $('#codeModal').modal('show');
-  	  console.log("http://"+location.host+"/#/edit?key="+createKey($('#snippet').text()));
   	};
 
     $scope.copySnippet = function(snippetContainer) {

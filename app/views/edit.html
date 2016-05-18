@@ -60,7 +60,7 @@
 
         <div class="text-center">
           <div class="previewContainer">
-            <div id="snippet2"></div>
+            <div id="snippet2" ng-bind-html="previewTemplate"></div>
           </div>
 
           <div class="btn-group" role="group" aria-label="Pixel size">
@@ -98,7 +98,7 @@
 
       <div class="modal-footer">
         Super proud of your masterpiece?<br/>
-        <a href="mailto:chris.vqz@gmail.com">Send us a link</a> to your artwork and we might just add it to the homepage!
+        <a ng-href="mailto:chris.vqz@gmail.com?Subject=See%20my%20masterpiece&Body=Hey%20Email%20Dogs%2C%0D%0A%0D%0ACheckout%20this%20dog%3A%0D%0A{{shareURL}}">Send us a link</a> to your artwork and we might just add it to the homepage!
       </div>
     </div>
   </div>
