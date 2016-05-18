@@ -19,7 +19,8 @@
     "filesaver": "*",
     "canvas-to-Blob.js": "*",
     "mjolnic-bootstrap-colorpicker": "bootstrap-colorpicker#^2.3.3",
-    "clipboard.js": "^0.2.0"
+    "clipboard.js": "^0.2.0",
+    "masonry": "^4.1.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",

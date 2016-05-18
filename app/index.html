@@ -72,10 +72,7 @@
       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create','UA-77562622-1','auto');
-      $rootScope.$on('$stateChangeSuccess', function (event) {
-        $window.ga('send', 'pageview', $location.path());
-      });
-      //ga('send', 'pageview');
+      ga('send', 'pageview');
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -97,6 +94,12 @@
     <script src="/bower_components/filesaver/filesaver.js"></script>
     <script src="/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script>
     <script src="/bower_components/clipboard.js/clipboard.js"></script>
+    <script src="/bower_components/get-size/get-size.js"></script>
+    <script src="/bower_components/ev-emitter/ev-emitter.js"></script>
+    <script src="/bower_components/desandro-matches-selector/matches-selector.js"></script>
+    <script src="/bower_components/fizzy-ui-utils/utils.js"></script>
+    <script src="/bower_components/outlayer/outlayer.js"></script>
+    <script src="/bower_components/masonry/masonry.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
