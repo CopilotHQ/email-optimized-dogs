@@ -44,3 +44,11 @@
     cursor: pointer;
   }
 }
+
+
+@media (max-width: 420px) {
+  .imageUploadContainer,
+  .imageUploadContent {
+    margin-bottom: 0;
+  }
+}

@@ -143,3 +143,37 @@ a {
     }
   }
 }
+
+
+@media (max-width: 420px) {
+  #paletteContainer {
+    height: auto;
+
+    #palette {
+      width: 100%;
+      position: relative;
+    }
+
+    table {
+      width: 100%;
+
+      tr {
+        td {
+          //height: 10px !important;
+          padding-top: 4.1%;
+          width: 4.1% !important;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
+  .dogGrid,
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .dogGrid {
+    padding-top: 61px;
+  }
+}

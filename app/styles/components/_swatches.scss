@@ -62,3 +62,15 @@
     padding: 5px 0 10px;
   }
 }
+
+
+@media (max-width: 420px) {
+  .swatches {
+    margin: 20px;
+  }
+
+  .swatch {
+    width: 10%;
+    padding: 10% 0 0;
+  }
+}
