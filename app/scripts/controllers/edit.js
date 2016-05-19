@@ -146,6 +146,7 @@ angular.module('emailDogsApp')
 
       /** Make swatches work **/
   	$('#currentSwatch').colorpicker({
+      align: 'left',
   	  create: function() {
   	    color: $scope.curColor;
   	  }
