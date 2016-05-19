@@ -70,8 +70,8 @@ angular.module('emailDogsApp')
     $scope.isEdit = false;
     $scope.$on("$locationChangeSuccess", function () {
       // Analytics
-      ga('send', 'pageview');
-      
+      ga('send', 'pageview', $location.path());
+
       $scope.isEdit = $location.path() == '/edit';
       if($scope.isEdit) {
         if($location.search()["key"]) {
