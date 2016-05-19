@@ -146,6 +146,10 @@ a {
 
 
 @media (max-width: 420px) {
+  .hidden-xxs {
+    display: none;
+  }
+  
   #paletteContainer {
     height: auto;
 
