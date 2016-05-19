@@ -45,10 +45,10 @@
               <img src="images/dog-logo.png" /> <span class="hidden-xs">Email Optimized Dogs {{$location.path()}}</span>
             </a>
           </div>
-          <div class="col-sm-8 text-right" ng-if="!isEdit">
+          <div class="col-xs-8 text-right" ng-if="!isEdit">
             <a href="#/edit" class="btn btn-primary">Create Pixel Art <span aria-hidden="true" class="iconic iconic-plus-thin" style="margin-left: 10px;"></span></a>
           </div>
-          <div class="col-sm-8 text-right" ng-if="isEdit">
+          <div class="col-xs-8 text-right" ng-if="isEdit">
             <button class="btn btn-secondary" id="savePixels" ng-click="savePixels()"><span aria-hidden="true" class="iconic iconic-hard-drive"></span> <span class="hidden-xs">save</span></button>
             <button class="btn btn-secondary" id="loadPixels" ng-click="loadPixels()"><span aria-hidden="true" class="iconic iconic-folder"></span> <span class="hidden-xs">load</span></button>
             <button class="btn btn-secondary" id="clearPixels" ng-click="clearPixels()"><span aria-hidden="true" class="iconic iconic-trash"></span> <span class="hidden-xs">clear</span></button>
