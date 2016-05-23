@@ -85,14 +85,24 @@ a {
   border-bottom: 1px solid #1a1a1a;
 }
 
+.dogHeadline {
+  padding: 100px 40px 40px;
+  font-size: 24px;
+  color: #777;
+}
+
 .dogGrid {
-  padding-top:80px;
+  padding-top: 80px;
   text-align: center;
 
   display: flex;
   justify-content: center;
   align-items: stretch;
   flex-flow: row wrap;
+
+  &.dogList {
+    padding-top: 0;
+  }
 }
 
 #paletteContainer {
@@ -149,7 +159,7 @@ a {
   .hidden-xxs {
     display: none;
   }
-  
+
   #paletteContainer {
     height: auto;
 
@@ -179,5 +189,9 @@ a {
   }
   .dogGrid {
     padding-top: 61px;
+
+    &.dogList {
+      padding-top: 0;
+    }
   }
 }
