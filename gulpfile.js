@@ -130,7 +130,7 @@ gulp.task('bower', function () {
 ///////////
 
 gulp.task('clean:dist', function (cb) {
-  rimraf('./dist', cb);
+  rimraf('./dist/*', cb);
 });
 
 gulp.task('client:build', ['html', 'styles'], function () {
