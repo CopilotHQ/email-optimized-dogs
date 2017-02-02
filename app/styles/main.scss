@@ -87,8 +87,13 @@ a {
 
 .dogHeadline {
   padding: 100px 40px 40px;
-  font-size: 24px;
+  font-size: 22px;
   color: #777;
+
+  .dogSubHeadline {
+    margin-top: 10px;
+    font-size: 18px;
+  }
 }
 
 .dogGrid {

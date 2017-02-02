@@ -36,7 +36,7 @@ angular
 angular.module('emailDogsApp')
   .controller('AppCtrl', ["$scope", "$location", "$http", function($scope, $location, $http){
     // These templates are displayed on the home page.  They require a PNG in the images/templates dir
-    $scope.templates = ['dog_001','dog_002','dog_003','doge','moonmoon','hotdog','dogbountyhunter','loveletter','pug'];
+    $scope.templates = ['dog_001','dog_002','dog_003','doge','moonmoon','hotdog','dogbountyhunter'];
     // These are named templates which are not displayed on the main page
     var hiddenTemplates = ['aweber', 'pinkcream', 'phldesign', 'cmphilly'];
     // This is used to store the HTML Table code which is our template.
